@@ -1,5 +1,4 @@
 import React, { useMemo } from "react";
-// import { Loader } from "@googlemaps/js-api-loader";
 import { GoogleMap } from "@react-google-maps/api";
 
 export default function Map() {
@@ -17,7 +16,6 @@ export default function Map() {
     return <GoogleMap
         zoom={10}
         center={center}
-        // mapContainerStyle={containerStyle}
         options={options}
         mapContainerClassName="map-container"
     >
