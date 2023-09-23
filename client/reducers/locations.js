@@ -12,6 +12,7 @@ export const locSlice = createSlice({
     initialState,
     reducers: {
         addLocation: (state, action) => {
+            console.log(action);
             ++state.totalLocsToVisit;
             state.locList.push({
                 locId: ++state.lastLocId,
