@@ -57,6 +57,8 @@ module.exports = {
         },
         proxy: {
             '/api': 'localhost:3000'
-        }
-    }
+        },
+        historyApiFallback: true
+    },
+    devtool: 'source-map'
 };
