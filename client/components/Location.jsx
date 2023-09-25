@@ -1,17 +1,23 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { visitedLoc } from "../reducers/locations";
+import { visitedLoc, removeLoc } from "../reducers/locations";
 
 export default function Location(props) {
     const dispatch = useDispatch();
 
     return (
         <div className="list-item">
-            <div>Location: {props.location}</div>
+            <div><strong>Location:</strong> {props.location}</div>
             <div>
-                Visited? <button
-                    onClick={() => dispatch(visitedLoc(props.location))}
-                >{props.visited}</button>
+                <strong>Visited?</strong> <button
+                    onClick={() => dispatch(visitedLoc(props.locId))}
+                    id="visited-btn"
+                >{props.visited ? 'Yes' : 'No'}</button>
+            </div>
+            <div>
+                <button
+                    onClick={() => dispatch(removeLoc(props.locId))}
+                >Remove?</button>
             </div>
         </div>
     );
