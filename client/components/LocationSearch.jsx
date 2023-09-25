@@ -4,27 +4,23 @@ import { addLocation } from "../reducers/locations";
 import { StandaloneSearchBox } from "@react-google-maps/api";
 
 export default function LocationSearch() {
-    const inputRef = useRef();
+    const inputRef = useRef(null);
     const dispatch = useDispatch();
     const placeChangeHandler = () => {
-        const [place] = inputRef.current.getPlaces();
+        const [ place ] = inputRef.current.getPlaces();
         if (place) {
-            console.log(place);
-            // console.log(place.geometry.location.lng());
+            console.log(place.formatted_address);
+            console.log('lat: ', place.geometry.location.lat());
+            console.log('lng:', place.geometry.location.lng());
         }
-        console.log(inputRef.current);
     }
         
     
-    console.log(inputRef);
     return (
-        <>
+        <div id="loc-search-container">
             <StandaloneSearchBox
                 onLoad={ref => inputRef.current = ref}
                 onPlacesChanged={placeChangeHandler}
-                options={{
-                    fields: ['geometry', 'name']
-                }}
             >
                 <input
                     id="location-combobox"
@@ -35,12 +31,19 @@ export default function LocationSearch() {
             </StandaloneSearchBox>
             <button
                 onClick={() => {
-                    if (inputRef.current !== '') {
-                        const [place] = inputRef.current.getPlaces();
+                    if (!inputRef.current.getPlaces()) return;
+                    const [place] = inputRef.current.getPlaces();
+                    if (place) {
+                        const payload = {
+                            location: place.formatted_address,
+                            lat: place.geometry.location.lat(),
+                            lng: place.geometry.location.lng()
+                        };
+                        dispatch(addLocation(payload));
                     }
-                    if (place) dispatch(addLocation(place.name));
                 }}
+                id="loc-submit-btn"
             >Submit</button>
-        </>
+        </div>
     );
 };
