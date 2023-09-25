@@ -16,21 +16,34 @@ export const locSlice = createSlice({
             ++state.totalLocsToVisit;
             state.locList.push({
                 locId: ++state.lastLocId,
-                location: action.payload,
-                visited: false
+                location: action.payload.location,
+                visited: false,
+                geoPos: {
+                    lat: action.payload.lat,
+                    lng: action.payload.lng,
+                }
             });
         },
-        visitedLoc: (state, action) => {
-            --state.totalLocsToVisit;
-            ++state.totalLocsVisited;
+        visitedLocation: (state, action) => {
             for (const loc of state.locList) {
                 if (action.payload === loc.locId) {
-                    loc.visited = true;
+                    --state.totalLocsToVisit;
+                    ++state.totalLocsVisited;
+                    loc.visited = loc.visited ? false : true;
+                }
+            }
+        },
+        removeLocation: (state, action) => {
+            for (let i = 0; i < state.locList.length; i++) {
+                const loc = state.locList[i];
+                if (action.payload === loc.locId) {
+                    loc.visited ? --state.totalLocsVisited : -- state.totalLocsToVisit;
+                    state.locList.splice(i, 1);
                 }
             }
         }
     }
 });
 
-export const { addLocation, visitedLoc } = locSlice.actions;
+export const { addLocation, visitedLocation, removeLocation } = locSlice.actions;
 export default locSlice.reducer;
