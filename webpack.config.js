@@ -15,6 +15,7 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
+        publicPath: '/dist/',
         filename: 'bundle.js'
     },
     mode: process.env.NODE_ENV,
@@ -52,8 +53,8 @@ module.exports = {
     ],
     devServer: {
         static: {
-            publicPath: '/dist',
-            directory: path.join(__dirname, 'dist')
+            publicPath: '/',
+            directory: path.join(__dirname)
         },
         proxy: {
             '/api': 'localhost:3000'
