@@ -21,11 +21,51 @@ body {
     align-items: center;
 }
 
-.map-container {
+#map-container {
     width: 100%;
     height: 50vh;
 }
 
+.visited-marker {
+    background-color: green;
+}
+
+#loc-search-container {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+}
+
 #location-combobox {
+    font-size: 28px;
+    padding: 1rem;
+    margin: 0.5rem;
     width: 25vw;
+    height: 1em;
+    border-radius: 1rem;
+}
+
+#loc-submit-btn {
+    height: 2em;
+    margin: 0.5rem;
+    padding: 0.75rem;
+    font-size: 28px;
+    border-radius: 0.5rem;
+}
+
+#loc-list {
+    background-color: lime;
+    width: 95%;
+    border-radius: 0.5em;
+    padding: 0.25rem;
+}
+
+.list-item {
+    background-color: #efeded;
+    width: 95%;
+    border: 0.5px solid;
+    border-radius: 0.25em;
+    padding: 0.25rem;
+    display: flex;
+    justify-content: space-between;
 }
