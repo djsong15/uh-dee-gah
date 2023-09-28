@@ -10,7 +10,11 @@ export default function Location(props) {
             <div><strong>Location:</strong> {props.location}</div>
             <div>
                 <strong>Visited?</strong> <button
-                    onClick={() => dispatch(visitedLocation(props.locId))}
+                    onClick={() => {
+                        console.log(props);
+                        props.flipMSwitch();
+                        dispatch(visitedLocation(props.locId));
+                    }}
                     id="visited-btn"
                 >{props.visited ? 'Yes' : 'No'}</button>
             </div>

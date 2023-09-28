@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 import Location from "./Location.jsx";
 
-export default function LocationList() {
+export default function LocationList(props) {
     const locList = useSelector(state => state.locations.locList);
 
     return (
@@ -17,6 +17,7 @@ export default function LocationList() {
                             locId={el.locId}
                             location={el.location}
                             visited={el.visited}
+                            flipMSwitch={props.flipMSwitch}
                         />;
                     })}
                 </div>
