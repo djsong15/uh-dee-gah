@@ -54,11 +54,12 @@ module.exports = {
     devServer: {
         static: {
             publicPath: '/',
-            directory: path.join(__dirname)
+            directory: path.join(__dirname, '/dist')
         },
         proxy: {
-            '/api': 'localhost:3000'
+            '/': 'http://localhost:3000',
         },
+        hot: true,
         historyApiFallback: true
     },
     devtool: 'source-map'
