@@ -1,0 +1,116 @@
+body {
+    background-color: beige;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+#root {
+    background-color: yellow;
+    width: 100%;
+    padding: 2em;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+.container {
+    border: 1px solid black;
+    background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#main-container {
+    background-color: purple;
+    display: flex;
+    justify-content: space-between;
+    align-content: stretch;
+}
+
+#map-container {
+    width: 100%;
+    height: 100%;
+}
+
+.visited-marker {
+    background-color: green;
+}
+
+#loc-search-container {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+}
+
+#location-combobox {
+    font-size: 20px;
+    padding: 1.5rem;
+    margin: 0.5rem;
+    width: 20vw;
+    height: 0.5em;
+    border-radius: 1rem;
+}
+
+#loc-submit-btn {
+    height: 2em;
+    margin: 0.5rem;
+    padding: 0.75rem;
+    font-size: 28px;
+    border-radius: 0.5rem;
+}
+
+#loc-list {
+    background-color: lime;
+    width: 95%;
+    border-radius: 0.5em;
+    padding: 0.25rem;
+}
+
+.list-item {
+    background-color: #efeded;
+    width: 95%;
+    border: 0.5px solid;
+    border-radius: 0.25em;
+    padding: 0.25rem;
+    display: grid;
+    grid-template-columns: 50% 25% 25%;
+    justify-content: space-between;
+}
+
+#earth {
+    width: 300px;
+    height: 300px;
+    background: url(https://web.archive.org/web/20150807125159if_/http://www.noirextreme.com/digital/Earth-Color4096.jpg);
+    border-radius: 50%;
+    background-size: 610px;
+    box-shadow: inset 8px 36px 80px 36px rgb(0, 0, 0), inset -6px 0 12px 4px rgba(255, 255, 255, 0.3);
+    animation-name: rotate;
+    animation-duration: 12s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    -webkit-animation-name: rotate;
+       -webkit-animation-duration: 12s;
+       -webkit-animation-iteration-count: infinite;
+       -webkit-animation-timing-function: linear;
+  }
+  @keyframes rotate {
+    from {
+      background-position: 0px 0px;
+    }
+    to {
+      background-position: 610px 0px;
+    }
+  }
+  @-webkit-keyframes rotate {
+    from {
+      background-position: 0px 0px;
+    }
+    to {
+      background-position: 610px 0px;
+    }
+  }
