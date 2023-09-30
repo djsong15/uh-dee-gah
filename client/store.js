@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import locReducer from "./reducers/locations";
+import userReducer from "./reducers/user";
 
 export const store = configureStore({
     reducer: {
-        locations: locReducer
+        locations: locReducer,
+        user: userReducer
     }
 });
