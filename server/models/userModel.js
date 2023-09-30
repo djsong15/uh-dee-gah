@@ -18,10 +18,11 @@ const userSchema = new Schema({
     placesList: Array,
 });
 
-userSchema.pre('save', (next) => {
+userSchema.pre('save', function (next) {
     if (!this.isModified('password')) return next();
     bcrypt.hash(this.password, SALT_WORK_FACTOR, (err, hash) => {
         if (err) return next(`bcrypt ERROR: ${err}`);
+        this.password = hash;
         return next();
     });
 });
