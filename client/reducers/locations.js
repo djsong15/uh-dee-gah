@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    // totalLocsVisited: 0,
+    totalLocsVisited: 0,
     // totalLocsToVisit: 0,
     locList: [],
     lastLocId: 100
@@ -36,10 +36,10 @@ export const locSlice = createSlice({
         visitedLocation: (state, action) => {
             for (const loc of state.locList) {
                 if (action.payload === loc.locId) {
-                    console.log('we visited', loc.location);
                     // --state.totalLocsToVisit;
-                    // ++state.totalLocsVisited;
                     loc.visited = loc.visited ? false : true;
+                    loc.visited ? ++state.totalLocsVisited : --state.totalLocsVisited;
+                    loc.visited ? console.log('we visited', loc.location) : console.log('we unvisited', loc.location);
                 }
             }
             fetch('/db/placesList', {
@@ -56,7 +56,7 @@ export const locSlice = createSlice({
             for (let i = 0; i < state.locList.length; i++) {
                 const loc = state.locList[i];
                 if (action.payload === loc.locId) {
-                    // loc.visited ? --state.totalLocsVisited : -- state.totalLocsToVisit;
+                    if (loc.visited) --state.totalLocsVisited;
                     state.locList.splice(i, 1);
                 }
             }
@@ -75,13 +75,12 @@ export const locSlice = createSlice({
             const { placesList } = action.payload;
             console.log('i got the list!', placesList);
             state.locList = placesList;
-            // for (const loc of state.locList) {
-            //     if (placesList.length > 0) ++state.lastLocId; 
-            //     if (loc.locId === state.lastLocId) state.lastLocId++;
-            //     // if (loc.visited) ++state.totalLocsVisited;
-            //     // else ++state.totalLocsToVisit;
-            // }
+            for (const loc of state.locList) {
+                if (loc.visited) ++state.totalLocsVisited;
+                // else ++state.totalLocsToVisit;
+            }
             state.lastLocId = state.locList[state.locList.length - 1]?.locId;
+            if (!state.lastLocId) state.lastLocId = 100;
         }
     }
 });
