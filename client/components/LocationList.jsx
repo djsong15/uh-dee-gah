@@ -8,7 +8,7 @@ export default function LocationList(props) {
 
     return (
         <div id="loc-list">
-            <h3>Places</h3>
+            <h3 style={{color: 'white'}}>Places</h3>
             {locList.length ? (
                 <div>
                     {locList.map((el ,i) => {
@@ -17,7 +17,6 @@ export default function LocationList(props) {
                             locId={el.locId}
                             location={el.location}
                             visited={el.visited}
-                            flipMSwitch={props.flipMSwitch}
                         />;
                     })}
                 </div>
