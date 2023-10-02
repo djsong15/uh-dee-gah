@@ -6,9 +6,10 @@ import LocationList from "../components/LocationList.jsx";
 export default function LocContainer(props) {
     return (
         <div className="container">
-            <h2>i'm container 2, bro</h2>
+            <h2>Let's go somewhere!</h2>
+            <div id="earth"></div>
             {props.isLoaded ? <LocationSearch /> : <div></div>}
-            <LocationList flipMSwitch={props.flipMSwitch} />
+            <LocationList />
         </div>
     );
 }
