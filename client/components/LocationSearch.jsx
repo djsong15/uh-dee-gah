@@ -14,8 +14,7 @@ export default function LocationSearch() {
             console.log('lng:', place.geometry.location.lng());
         }
     }
-        
-    
+
     return (
         <div id="loc-search-container">
             <StandaloneSearchBox
